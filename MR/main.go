@@ -8,101 +8,120 @@ import (
 	"github.com/sajari/regression"
 	"strings"
 	"strconv"
+	"net/http"
+	"encoding/json"
 )
 
+type Message struct {
+	Fich string	`json:"Fich"`
+	Pre float64	`json:"Pre"`
+	PosT int `json:PosT`
+	PosV int `json:PosV`
+	//CsvC rune `json:CsvC`
+	//CsvS rune `json:CsvS`
+}
+
 func main() {
-	reg := new(regression.Regression)
-	reg.SetObserved("Murders per annum per 1,000,000 inhabitants")
-	reg.SetVar(0, "Día")
-	reg.SetVar(1, "Mes")
-	reg.SetVar(2, "Año")
-	
-	file, err := os.Open("data.txt")
-	if err!=nil{
-		log.Fatal(err)
-	}
-	defer file.Close()
-	
-	fich := csv.NewReader(file)
-	fich.Comma = ';'
-	fich.Comment = '#'
-
-	records, err := fich.ReadAll()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	//fmt.Print(records)
-	
-	for i,record := range records {
-	
-		time := record[0]
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		
-		voltaje,err := strconv.ParseFloat(record[5],64)
-		if err!=nil{
-			fmt.Println("Error en voltaje:")
-			fmt.Println(record[5])
-			log.Fatal(err)
+		var u Message
+		
+		err := json.NewDecoder(r.Body).Decode(&u)
+		if err != nil {
+			http.Error(w, err.Error(), 400)
+			return
 		}
 		
-		if i%160000==159999{
-			fmt.Println(i,"Datos Procesados")
-			//reg.AddCross(PowCross(0, 2))
-		}
+		/*
+		fmt.Println(u.Fich)
+		fmt.Println(u.Pre)
+		fmt.Println(u.PosV)
+		fmt.Println(u.PosT)
+		//fmt.Println(u.CsvC)
+		//fmt.Println(u.CsvS)
+		*/
 		
-		array := strings.Split(time,"/")
+		reg := new(regression.Regression)
+		reg.SetObserved("Series temporales")
+		reg.SetVar(0, "Tiempo")
 		
-		d,err:= strconv.ParseFloat(array[0],64)
-		if err!=nil{
-			fmt.Println("Error en d")
-			log.Fatal(err)
-		}
-		m,err:= strconv.ParseFloat(array[1],64)
-		if err!=nil{
-			fmt.Println("Error en m")
-			log.Fatal(err)
-		}
-		a,err:= strconv.ParseFloat(array[2],64)
-		if err!=nil{
-			fmt.Println("Error en a")
-			log.Fatal(err)
-		}
+		if u.Pre>=0 && u.PosV>=0 && u.PosT>=0 && u.Fich!="" {
 			
-		reg.Train(
-			regression.DataPoint(voltaje, []float64{d,m,a}),
-		)
+			var fecha float64
+			
+			dir:="../data/" + u.Fich
+			
+			file, err := os.Open(dir)
+			if err!=nil{
+				log.Fatal(err)
+			}
+			defer file.Close()
+			
+			fich := csv.NewReader(file)
+			fich.Comma = ';'
+			fich.Comment = '#'
 
-		//fmt.Println("Fecha",time,"Voltaje:",value)
-	}
-	fmt.Println("Todos los datos han sido procesados entrenando a la máquina:")
-	reg.Run()
-	
-	prediction1, err := reg.Predict([]float64{22, 6, 2007})
-	if err!=nil{
-		log.Fatal(err)
-	}
-	
-	fmt.Println(prediction1)
-	
-		prediction2, err := reg.Predict([]float64{3, 1, 1999})
-	if err!=nil{
-		log.Fatal(err)
-	}
-	
-	fmt.Println(prediction2)
-	
-		prediction3, err := reg.Predict([]float64{1, 7, 2012})
-	if err!=nil{
-		log.Fatal(err)
-	}
-	
-	fmt.Println(prediction3)
-	
-		prediction4, err := reg.Predict([]float64{22, 11, 2017})
-	if err!=nil{
-		log.Fatal(err)
-	}
-	
-	fmt.Println(prediction4)
-	
+			records, err := fich.ReadAll()
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			//fmt.Print(records)
+			
+			for i,record := range records {
+			
+				time := record[u.PosT]
+				
+				voltaje,err := strconv.ParseFloat(record[u.PosV],64)
+				if err!=nil{
+					fmt.Println("Error en voltaje:")
+					fmt.Println(record[u.PosV])
+					log.Fatal(err)
+				}
+				
+				if i%160000==159999{
+					fmt.Println(i,"Datos Procesados")
+				}
+				
+				array := strings.Split(time,"/")		
+				
+				d:= array[0]
+				m:= array[1]
+				a:= array[2]
+				
+				varia:= d + m + a
+				
+				fecha,err=strconv.ParseFloat(varia,64)
+				if err!=nil{
+					fmt.Println("Error en la conversión")
+					log.Fatal(err)
+				}
+					
+				reg.Train(
+					regression.DataPoint(voltaje, []float64{fecha}),
+				)
+
+				//fmt.Println("Fecha",time,"Voltaje:",value)
+				//fmt.Println(varia)
+			}
+			fmt.Println("Datos procesados")
+			
+			reg.Run()
+			
+			prediction, err := reg.Predict([]float64{u.Pre})
+			if err!=nil{
+				log.Fatal(err)
+			}
+			
+			fmt.Println("La predicción para el tiempo elegido es: ",prediction)
+			
+			fmt.Fprintln(w, prediction)
+			
+		}else{
+			
+			fmt.Println("Error con los datos pasados.")
+			
+		}
+	})
+	log.Fatal(http.ListenAndServe(":9999", nil))
 }
