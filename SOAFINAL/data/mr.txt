@@ -1,0 +1,10 @@
+10 01 2018 11:01:12Se ha realizado la primera predicción con MR:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>5656.976058035949
+
+10 01 2018 11:01:39Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>5656.976058035949
+
+10 01 2018 12:01:10Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>
+10 01 2018 12:01:11Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>
+10 01 2018 12:01:26Nueva predicción realizada:{"Fich":"","Pre":12122012,"PosV":5,"PosT":0}</br>
+10 01 2018 12:01:03Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>
+10 01 2018 12:01:29Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>
+10 01 2018 12:01:17Nueva predicción realizada:{"Fich":"data.csv","Pre":12122012,"PosV":5,"PosT":0}</br>

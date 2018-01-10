@@ -15,55 +15,61 @@
 		<p>La predicción se realizará con los siguientes algoritmos:</p>
 	</div>
 
-	<div id="Aaron">
-		<h2>Nombre del algoritmo de Aarón</h2>
+	<div id="svr">
+		<h2>SVR</h2>
+		<p>Las máquinas de soporte vectorial, máquinas de vectores de soporte o máquinas de vector soporte (Support Vector Machines, SVMs) son un conjunto de algoritmos de aprendizaje supervisado</p>
+		<p>Estos métodos están propiamente relacionados con problemas de clasificación y regresión. Dado un conjunto de ejemplos de entrenamiento (de muestras) podemos etiquetar las clases y entrenar una SVM para construir un modelo que prediga la clase de una nueva muestra. Intuitivamente, una SVM es un modelo que representa a los puntos de muestra en el espacio, separando las clases a 2 espacios lo más amplios posibles mediante un hiperplano de separación definido como el vector entre los 2 puntos, de las 2 clases, más cercanos al que se llama vector soporte. Cuando las nuevas muestras se ponen en correspondencia con dicho modelo, en función de los espacios a los que pertenezcan, pueden ser clasificadas a una o la otra clase.</p>
+	</div>
+
+	<div id="mr">
+		<h2>MR</h2>
 		<p>breve explicación</p>
 		<p></p>
 		<p></p>
 	</div>
 
-	<div id="Pablo">
-		<h2>Nombre del algoritmo de Pablo</h2>
-		<p>breve explicación</p>
-		<p></p>
-		<p></p>
-	</div>
-
-	<div id="Carlos">
-		<h2>Nombre del algoritmo de Carlos</h2>
-		<p>breve explicación</p>
-		<p></p>
-		<p></p>
+	<div id="arima">
+		<h2>Modelo autorregresivo integrado de media móvil</h2>
+		<p>En estadística, los modelos autorregresivos de media móvil (en inglés AutoRegressive Moving Average models, abreviados ARMA), también llamados Modelos Box-Jenkins, se aplican a series temporales de datos.</p>
+		<p>Dada una serie temporal de datos Xt, el modelo ARMA es una herramienta para entender y, aún más, para predecir futuros valores de la serie. El modelo está formado por dos partes, una parte autorregresiva (AR) y otra de media móvil (MA). El modelo se conoce con el nombre de modelo ARMA (p,q), donde p es el orden de la parte autorregresiva y q es el orden de la parte de media móvil.</p>
 	</div>
 
 	<div id="Carga">	<!--formulario de carga de archivo-->
-		<h2>Cargar archivo de datos</h2>
+		<h2>Cargar archivo de CSV con datos</h2>
 		
-		<p>Para poder utilizarla cargue un fichero en esta sección:</p>
+		<p>Para poder utilizarla cargue un archivo CSV con las siguientes columnas:</p>
+		<p>Date / Time / Global_active_power / Global_reactive_power / Voltage / global_intensity / Sub_metering_1 / Sub_metering_2 / Sub_metering_3</p>
+		<p>Asegurese que sea un archivo CSV con los datos de manera correcta para poder entrenar a los algoritmos.</p>
+ 
 		
         <form action="cliente.php" method="post" enctype="multipart/form-data">
 
             <input type="file" name="archivo" id="archivo"></input>
-			
-			<input type="hidden" name="variable1" value=5 />
 
             <input type="submit" value="Subir archivo"></input>
 
         </form>
-
-
-
 		
-		<p>El fichero debe ser de las siguientes características: bla bla bla bla </p>
+	<!-- como el csv que vamos a subir es bastante grande, deberemos cambiar la configuración de php.ini en nuestro servidor apache
+	en concreto las siguientes lineas deberán quedar así:
+	
+	; Maximum allowed size for uploaded files.
+	; http://php.net/upload-max-filesize
+	upload_max_filesize=30M
+	post_max_size = 30M
+	
+	Esto se debe a que el csv que utilizamos para entrenar y adjuntamos, pesa 25 M por lo que si no cambiamos esto, nos daría error al subirlo.
+	-->
+	
 	</div>
 	<div id="barritanegra">
 	<br>
 	</div>
 	<div style="clear: both">
-		<p>Algoritmos obtenidos en: </p>
-		<p><a href="www.wikipedia.org">Wikipedia</a></p>
-		<p><a href="www.wikipedia.org">Wikipedia</a></p>
-		<p><a href="www.wikipedia.org">Wikipedia</a></p>
+		<p>Enlaces de obtención de los algoritmos: </p>
+		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
+		<p><a href="www.wikipedia.org">MR</a></p>
+		<p><a href="http://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html#statsmodels.tsa.arima_model.ARIMA">ARIMA</a></p>
 		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
 	</div>
 </div>
