@@ -83,7 +83,7 @@ func main() {
 			//fmt.Print(records)
 			
 			//Bucle for para leer e iterar sobre los datos
-			for i,record := range records {
+			for _,record := range records {
 			
 				//Coger el tiempo del registro
 				time := record[u.PosT]
