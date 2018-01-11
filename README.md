@@ -10,6 +10,31 @@ En este ejercicio se lleva a cabo una labor de análisis e interpretación de da
 * [Pandas](https://pandas.pydata.org/) (`pandas-0.21.0`)
 * [Flask](http://flask.pocoo.org/) (`flask-0.12.2`)
 
+## Instalación y ejecución
+
+### Windows
+
+Es preferible utilizar [Anaconda 3](https://anaconda.com) (o [Miniconda](https://conda.io/miniconda.html))
+en vez de la distribución oficial de Python 3.
+
+```bash
+conda install libpython
+conda install -c msys2 m2w64-toolchain numpy cython
+pip install -r requirements.txt
+```
+
+### Linux
+
+Utilizando Python 3.5 o superior:
+```bash
+pip install -r requirements.txt
+```
+
+El servicio web se encuentra en el archivo `server.py`. Para ejecutarlo simplemente se usa:
+```bash
+python server.py
+```
+
 ## Enfoque utilizado
 
 Después de haber investigado sobre diversos métodos de previsión de series temporales, el más sencillo de implementar ha sido usando `prophet`, una librería de Facebook enfocada al análisis de este tipo de datos.
