@@ -18,7 +18,8 @@ Después de haber investigado sobre diversos métodos de previsión de series te
 
 1. Obtención de datos y su interpretación mediante `pandas`.
 2. Análisis de los datos y creación de un modelo de previsión mediante `prophet`.
-3. Creación de un pronóstico en un entorno cercano a la fecha a estimar (por lo menos de un mes)
+3. Creación de un pronóstico en un entorno cercano a la fecha a estimar (por lo menos de un mes).
+4. Implementación del modelo mediante una interfaz REST (sobre el puerto 5000).
 
 ## Aclaraciones
 
