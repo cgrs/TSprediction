@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+	<meta charset="utf-8" />
+	<title>predicción automática de series temporales</title>
+	<link rel="stylesheet" type="text/css" href="cliente.css">
+  </head>
+  <body>
+<div id="todo">
+<div id="casitodo">
+	
+	<div id="todos">
+		<h1>Predicción automática de series temporales</h1>
+		<p>Esta aplicación permite cargar un fichero con series temporales para luego poder predecir cómo continúa la misma.</p>
+		<p>La predicción se realizará con los siguientes algoritmos:</p>
+	</div>
+
+	<div id="svr">
+		<h2>SVR</h2>
+		<p>Las máquinas de soporte vectorial, máquinas de vectores de soporte o máquinas de vector soporte (Support Vector Machines, SVMs) son un conjunto de algoritmos de aprendizaje supervisado</p>
+		<p>Estos métodos están propiamente relacionados con problemas de clasificación y regresión. Dado un conjunto de ejemplos de entrenamiento (de muestras) podemos etiquetar las clases y entrenar una SVM para construir un modelo que prediga la clase de una nueva muestra. Intuitivamente, una SVM es un modelo que representa a los puntos de muestra en el espacio, separando las clases a 2 espacios lo más amplios posibles mediante un hiperplano de separación definido como el vector entre los 2 puntos, de las 2 clases, más cercanos al que se llama vector soporte. Cuando las nuevas muestras se ponen en correspondencia con dicho modelo, en función de los espacios a los que pertenezcan, pueden ser clasificadas a una o la otra clase.</p>
+	</div>
+
+	<div id="mr">
+		<h2>Least Squares</h2>
+		<p>Least Squares es una técnica de análisis numérico enmarcada dentro de la optimización matemática, en la que, dados un conjunto de pares ordenados —variable independiente, variable dependiente— y una familia de funciones, se intenta encontrar la función continua, dentro de dicha familia, que mejor se aproxime a los datos (un "mejor ajuste"), de acuerdo con el criterio de mínimo error cuadrático.</p>
+	</div>
+
+	<div id="prophet">
+		<h2>Prophet</h2>
+		<p>
+En estadísticas, los métodos "Markov chain Monte Carlo" (MCMC) son una clase de algoritmos para el muestreo a partir de una distribución de probabilidad basada en la construcción de una cadena de Markov que tiene la distribución deseada como distribución de equilibrio. El estado de la cadena después de una serie de pasos se usa luego como una muestra de la distribución deseada. La calidad de la muestra mejora en función del número de pasos.</p>
+	</div>
+
+	<div id="Carga">	<!--formulario de carga de archivo-->
+		<h2>Cargar archivo de CSV con datos</h2>
+		<p>Para utilizar la aplicación debe introducir unos valores para los que se hará la predicción y un archivo CSV para entrenar a los algoritmos</p>
+
+ 
+		
+        <form action="cliente.php" method="post" enctype="multipart/form-data">
+		
+			<p>Debe introducir el valor para el cual quiere la predicción en SVR y LS
+			<input type="text" name="Pre" id="Pre" required ></p>
+			
+			<p>PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje
+			<input type="text" name="PosV" id="PosV" required ></p>
+			
+			<p>PostT es la posición de la variable en la que se encuentra el tiempo, debe de tener formato dd/mm/aaaa
+			<input type="text" name="PosT" id="PosT" required ></p>
+
+			<p>Debe introducir la fecha para la cual quiere la predicción en prophet (el formato debe ser 10/10/2010)
+			<input type="text" name="date" id="date" required ></p>	
+
+			<p>Debe introducir la característica a predecir en prophet (Voltage, global_active..)
+			<input type="text" name="caract" id="caract" required ></p>			
+			
+			
+		<p>Cargue un archivo CSV con las siguientes columnas:</p>
+		<p>Date / Time / Global_active_power / Global_reactive_power / Voltage / global_intensity / Sub_metering_1 / Sub_metering_2 / Sub_metering_3</p>
+		<p>Asegurese que sea un archivo CSV con los datos de manera correcta para poder entrenar a los algoritmos correctamente.</p>
+	
+            <input type="file" name="archivo" id="archivo" required ></input>
+
+            <input type="submit" value="Enviar valores y Subir archivo" required ></input>
+
+        </form>
+		
+	<!-- como el csv que vamos a subir es bastante grande, deberemos cambiar la configuración de php.ini en nuestro servidor apache
+	en concreto las siguientes lineas deberán quedar así:
+	
+	; Maximum allowed size for uploaded files.
+	; http://php.net/upload-max-filesize
+	upload_max_filesize=30M
+	post_max_size = 30M
+	
+	Esto se debe a que el csv que utilizamos para entrenar y adjuntamos, pesa 25 M por lo que si no cambiamos esto, nos daría error al subirlo.
+	-->
+	
+	</div>
+	<div id="barritanegra">
+	<br>
+	</div>
+	<div style="clear: both">
+		<p>Enlaces de obtención de los algoritmos: </p>
+		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
+		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">LS</a></p>
+		<p><a href="https://facebook.github.io/prophet/">prophet</a></p>
+		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
+	</div>
+</div>
+<br>
+</div>
+ </body>
+</html>
