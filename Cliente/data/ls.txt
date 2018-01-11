@@ -1,4 +1,10 @@
-10 01 2018 16:01:47Se ha realizado la primera predicción con MR:</br>5656.976058035949
+11 01 2018 11:01:17Se ha realizado la primera predicción con LS:4278.878686320841
 
-10 01 2018 17:01:25Nueva predicción realizada:</br>
-10 01 2018 17:01:09Nueva predicción realizada:</br>
+11 01 2018 11:01:57Nueva predicción realizada:4278.878686320841
+
+11 01 2018 11:01:37Nueva predicción realizada:4278.878686320841
+
+11 01 2018 11:01:49Nueva predicción realizada:4278.878686320841
+
+11 01 2018 11:01:57Nueva predicción realizada:4278.878686320841
+

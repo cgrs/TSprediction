@@ -25,6 +25,12 @@
 
 			$PosT = intval($_POST['PosT']);
 			//echo $PosT;
+			
+			$date = $_POST['date'];
+			//echo $date;
+
+			$caract = $_POST['caract'];
+			//echo $PosT;
 			 
 			if ($_FILES['archivo']["error"] > 0) 
 			  {
@@ -47,9 +53,11 @@
 					$Fich= $_FILES['archivo']['name'];
 				
 			  }
+			  
+			$ruta= "data/$Fich";
 
 			//nombramos un array que recopila todos los datos y el nombre del fichero subido.
-			$data = array('Fich' => $Fich, 'Pre' => $Pre, 'PosV' => $PosV, 'PosT' => $PosT);
+			$data = array('Fich' => $Fich, 'Pre' => $Pre, 'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta);
 			 
 			
 			if (isset($_FILES['archivo']['name']))
@@ -80,10 +88,10 @@
 		<a class="boton_personalizado" href="descarga.php?var=2" >Predicción LS</a>
 	</div>
 
-	<div id="arima">
-		<h2>Modelo autorregresivo integrado de media móvil</h2>
-		<p>aquí puede descargar su archivo con la predicción del algoritmo ARIMA</p>
-		<a class="boton_personalizado" href="descarga.php?var=3" >Predicción ARIMA</a>
+	<div id="prophet">
+		<h2>Prophet</h2>
+		<p>aquí puede descargar su archivo con la predicción del algoritmo Prophet</p>
+		<a class="boton_personalizado" href="descarga.php?var=3" >Predicción prophet</a>
 	</div>
 	<div id="barritanegra">
 	<br>
@@ -92,7 +100,7 @@
 		<p>Enlaces de obtención de los algoritmos: </p>
 		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
 		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">LS</a></p>
-			<p><a href="http://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html#statsmodels.tsa.arima_model.ARIMA">ARIMA</a></p>
+		<p><a href="https://facebook.github.io/prophet/">prophet</a></p>
 		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
 	</div>
 </div>

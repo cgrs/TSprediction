@@ -26,10 +26,10 @@
 		<p>Least Squares es una técnica de análisis numérico enmarcada dentro de la optimización matemática, en la que, dados un conjunto de pares ordenados —variable independiente, variable dependiente— y una familia de funciones, se intenta encontrar la función continua, dentro de dicha familia, que mejor se aproxime a los datos (un "mejor ajuste"), de acuerdo con el criterio de mínimo error cuadrático.</p>
 	</div>
 
-	<div id="arima">
-		<h2>Modelo autorregresivo integrado de media móvil</h2>
-		<p>En estadística, los modelos autorregresivos de media móvil (en inglés AutoRegressive Moving Average models, abreviados ARMA), también llamados Modelos Box-Jenkins, se aplican a series temporales de datos.</p>
-		<p>Dada una serie temporal de datos Xt, el modelo ARMA es una herramienta para entender y, aún más, para predecir futuros valores de la serie. El modelo está formado por dos partes, una parte autorregresiva (AR) y otra de media móvil (MA). El modelo se conoce con el nombre de modelo ARMA (p,q), donde p es el orden de la parte autorregresiva y q es el orden de la parte de media móvil.</p>
+	<div id="prophet">
+		<h2>Prophet</h2>
+		<p>
+En estadísticas, los métodos "Markov chain Monte Carlo" (MCMC) son una clase de algoritmos para el muestreo a partir de una distribución de probabilidad basada en la construcción de una cadena de Markov que tiene la distribución deseada como distribución de equilibrio. El estado de la cadena después de una serie de pasos se usa luego como una muestra de la distribución deseada. La calidad de la muestra mejora en función del número de pasos.</p>
 	</div>
 
 	<div id="Carga">	<!--formulario de carga de archivo-->
@@ -40,7 +40,7 @@
 		
         <form action="cliente.php" method="post" enctype="multipart/form-data">
 		
-			<p>Debe introducir el valor para el cual quiere la predicción
+			<p>Debe introducir el valor para el cual quiere la predicción en SVR y LS
 			<input type="text" name="Pre" id="Pre" required ></p>
 			
 			<p>PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje
@@ -48,6 +48,13 @@
 			
 			<p>PostT es la posición de la variable en la que se encuentra el tiempo, debe de tener formato dd/mm/aaaa
 			<input type="text" name="PosT" id="PosT" required ></p>
+
+			<p>Debe introducir la fecha para la cual quiere la predicción en prophet (el formato debe ser 10/10/2010)
+			<input type="text" name="date" id="date" required ></p>	
+
+			<p>Debe introducir la característica a predecir en prophet (Voltage, global_active..)
+			<input type="text" name="caract" id="caract" required ></p>			
+			
 			
 		<p>Cargue un archivo CSV con las siguientes columnas:</p>
 		<p>Date / Time / Global_active_power / Global_reactive_power / Voltage / global_intensity / Sub_metering_1 / Sub_metering_2 / Sub_metering_3</p>
@@ -78,7 +85,7 @@
 		<p>Enlaces de obtención de los algoritmos: </p>
 		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
 		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">LS</a></p>
-		<p><a href="http://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html#statsmodels.tsa.arima_model.ARIMA">ARIMA</a></p>
+		<p><a href="https://facebook.github.io/prophet/">prophet</a></p>
 		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
 	</div>
 </div>

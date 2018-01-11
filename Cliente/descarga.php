@@ -14,7 +14,7 @@ else if ($v1==2)
  }
 else if($v1==3)
  {
-	$file ="data/arima.txt"; 
+	$file ="data/prophet.txt"; 
 	$filename = "fichero3.txt"; // el nombre con el que se descargara, puede ser diferente al original 
  }
 
