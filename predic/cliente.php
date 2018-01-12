@@ -62,7 +62,7 @@
 			
 			if (isset($_FILES['archivo']['name']))
 			{
-				$handle = curl_init("http://localhost/predic/ESB.php");
+				$handle = curl_init("http://localhost/TSprediction/predic/ESB.php");
 				curl_setopt($handle, CURLOPT_POST, true);
 				curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($data));
 				curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);

@@ -8,13 +8,13 @@ use Phpml\SupportVectorMachine\Kernel;
 
 // recogida de datos
 // $arr = array('Fich' => "data.csv", 'Pre' => 12122012, 'PosV' => 5, 'PosT' => 0); // formato de la variable de datos que va a llegar por curl
-$data = json_decode(file_get_contents('php://input'));
+$data = json_decode(file_get_contents('php://input'), true);
+//var_dump($data);
 //$data['Fich'] = 'data.csv'; // solo para pruebas, cuando funcione el esb comentar
-$ruta_datos = dirname(dirname(__FILE__)).'/data/'.$data['Fich'];
-$num = $data['num'];
+$ruta_datos = dirname(dirname(__FILE__)).'/data/'.$data["Fich"];
+$num = $data["num"];
 //$num = 2000; // solo para pruebas, comentar cuando funcione el esb
 //var_dump($ruta_datos);
-var_dump($data);
 if (($fichero = fopen($ruta_datos, "r")) !== FALSE) {
     // Lee los nombres de los campos
     $nombres_campos = fgetcsv($fichero, 0, ",", "\"", "\"");
@@ -38,7 +38,7 @@ if (($fichero = fopen($ruta_datos, "r")) !== FALSE) {
 	//echo "Elementos: ";
 	//print_targets($targets);
 	//echo "Elemento a predecir: ".$predict."<br>";
-	echo "Resultado (predice el siguiente): ".$result;
+	echo "Resultado: ".$result;
 }
 
 ?>
