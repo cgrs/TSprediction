@@ -13,6 +13,25 @@ import (
 	"encoding/json"
 )
 
+//Cambiar un string con la fecha a float ddmmaaaa
+func formatearFecha(time string) float64{
+	array := strings.Split(time,"/")	
+	
+	d:= array[0]
+	m:= array[1]
+	a:= array[2]
+	
+	varia:= d + m + a
+	
+	fecha,err:=strconv.ParseFloat(varia,64)
+	if err!=nil{
+		fmt.Println("Error en la conversión")
+		log.Fatal(err)
+	}
+	
+	return fecha
+}
+
 //Estructura para el mensaje recibido en formato json
 type Message struct {
 	Fich string	`json:"Fich"`
@@ -55,9 +74,6 @@ func main() {
 		//Comprobaciones de variables
 		if u.Pre>=0 && u.PosV>=0 && u.PosT>=0 && u.Fich!="" {
 			
-			//Variable para almacenar la fecha
-			var fecha float64
-			
 			//Path de los datos
 			dir:="../data/" + u.Fich
 			
@@ -97,20 +113,7 @@ func main() {
 				}
 				
 				//Cambiando el formato del tiempo
-				array := strings.Split(time,"/")		
-				
-				d:= array[0]
-				m:= array[1]
-				a:= array[2]
-				
-				varia:= d + m + a
-				
-				//Cambiar de string a float
-				fecha,err=strconv.ParseFloat(varia,64)
-				if err!=nil{
-					fmt.Println("Error en la conversión")
-					log.Fatal(err)
-				}
+				fecha:=formatearFecha(time)
 					
 				//Entrenar el modelo
 				reg.Train(
@@ -126,7 +129,7 @@ func main() {
 			reg.Run()
 			
 			//Predicción pasada
-			prediction, err := reg.Predict([]float64{u.Pre})
+			prediction, err := reg.Predict([]float64{formatearFecha(u.Pre)})
 			if err!=nil{
 				log.Fatal(err)
 			}
