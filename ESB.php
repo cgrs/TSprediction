@@ -26,7 +26,7 @@ $datos = json_decode(file_get_contents('php://input'));
 	curl_close($handle);
 
 	// me comunico con el algoritmo svr programado en php
-	$handle = curl_init("http://localhost/TSprediction/predic/svr/index.php");
+	$handle = curl_init("http://localhost/TSprediction/svr/index.php");
 	curl_setopt($handle, CURLOPT_POST, true);
 	curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($datos));
 	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
