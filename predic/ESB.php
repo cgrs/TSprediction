@@ -4,7 +4,7 @@ $datos = json_decode(file_get_contents('php://input'));
 
 //var_dump ($datos);
 
-	// con este curl al puerto 9999 me comunico con el algoritmo Least Squares programado en GO
+	// con este curl al puerto 9999 me comunico con el algoritmo MR programado en GO
 	$handle = curl_init("localhost:9999");
 	curl_setopt($handle, CURLOPT_POST, true);
 	curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($datos));
@@ -47,7 +47,7 @@ $datos = json_decode(file_get_contents('php://input'));
     {
         if(fwrite($archivo, date("d m Y H:m:s"). $mensaje.$response."\n"))
         {
-            echo "Least squares se ha ejecutado correctamente";
+            echo "MR se ha ejecutado correctamente";
 			echo "<br>";
         }
         else
