@@ -35,7 +35,7 @@ func formatearFecha(time string) float64{
 //Estructura para el mensaje recibido en formato json
 type Message struct {
 	Fich string	`json:"Fich"`
-	Pre float64	`json:"Pre"`
+	Pre string	`json:"Pre"`
 	PosT int `json:PosT`
 	PosV int `json:PosV`
 	//CsvC rune `json:CsvC`
@@ -72,7 +72,7 @@ func main() {
 		reg.SetVar(0, "Tiempo")
 		
 		//Comprobaciones de variables
-		if u.Pre>=0 && u.PosV>=0 && u.PosT>=0 && u.Fich!="" {
+		if u.Pre!="" && u.PosV>=0 && u.PosT>=0 && u.Fich!="" {
 			
 			//Path de los datos
 			dir:="../data/" + u.Fich
@@ -128,8 +128,11 @@ func main() {
 			//Correr el modelo
 			reg.Run()
 			
+			//Cambiamos de string a float64 y quitamos "/" de la fecha
+			prede:=formatearFecha(u.Pre)
+			
 			//Predicción pasada
-			prediction, err := reg.Predict([]float64{formatearFecha(u.Pre)})
+			prediction, err := reg.Predict([]float64{prede})
 			if err!=nil{
 				log.Fatal(err)
 			}
