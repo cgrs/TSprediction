@@ -22,8 +22,8 @@
 	</div>
 
 	<div id="mr">
-		<h2>Least Squares</h2>
-		<p>Least Squares es una técnica de análisis numérico enmarcada dentro de la optimización matemática, en la que, dados un conjunto de pares ordenados —variable independiente, variable dependiente— y una familia de funciones, se intenta encontrar la función continua, dentro de dicha familia, que mejor se aproxime a los datos (un "mejor ajuste"), de acuerdo con el criterio de mínimo error cuadrático.</p>
+		<h2>MR</h2>
+		<p>MR es una técnica de análisis numérico enmarcada dentro de la optimización matemática, en la que, dados un conjunto de pares ordenados —variable independiente, variable dependiente— y una familia de funciones, se intenta encontrar la función continua, dentro de dicha familia, que mejor se aproxime a los datos (un "mejor ajuste"), de acuerdo con el criterio de mínimo error cuadrático.</p>
 	</div>
 
 	<div id="prophet">
@@ -40,17 +40,14 @@ En estadísticas, los métodos "Markov chain Monte Carlo" (MCMC) son una clase d
 		
         <form action="cliente.php" method="post" enctype="multipart/form-data">
 		
-			<p>Debe introducir el valor para el cual quiere la predicción en SVR y LS
-			<input type="text" name="Pre" id="Pre" required ></p>
-			
-			<p>PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje
-			<input type="text" name="PosV" id="PosV" required ></p>
-			
-			<p>PostT es la posición de la variable en la que se encuentra el tiempo, debe de tener formato dd/mm/aaaa
-			<input type="text" name="PosT" id="PosT" required ></p>
-
-			<p>Debe introducir la fecha para la cual quiere la predicción en prophet (el formato debe ser 10/10/2010)
+			<p>Debe introducir la fecha para la cual quiere la predicción, debe de tener formato dd/mm/aaaa
 			<input type="text" name="date" id="date" required ></p>	
+			
+			<!-- PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje -->
+			<input type="hidden" name="PosV" id="PosV" value=5 required >
+			
+			<!--PostT es la posición de la variable en la que se encuentra el tiempo en el csv-->
+			<input type="hidden" name="PosT" id="PosT" value=0 required >
 
 			<p>Debe introducir la característica a predecir en prophet (Voltage, global_active..)
 			<input type="text" name="caract" id="caract" required ></p>		
@@ -87,7 +84,7 @@ En estadísticas, los métodos "Markov chain Monte Carlo" (MCMC) son una clase d
 	<div style="clear: both">
 		<p>Enlaces de obtención de los algoritmos: </p>
 		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
-		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">LS</a></p>
+		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">MR</a></p>
 		<p><a href="https://facebook.github.io/prophet/">prophet</a></p>
 		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
 	</div>

@@ -17,9 +17,6 @@
 
 		<?php
 		
-			$Pre = intval($_POST['Pre']);
-			//echo $Pre;
-
 			$PosV = intval($_POST['PosV']);
 			//echo $PosV;
 
@@ -60,7 +57,7 @@
 			$ruta= "data/$Fich";
 
 			//nombramos un array que recopila todos los datos y el nombre del fichero subido.
-			$data = array('Fich' => $Fich, 'Pre' => $Pre, 'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta, 'num' => $num);
+			$data = array('Fich' => $Fich, 'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta, 'num' => $num);
 			 
 			
 			if (isset($_FILES['archivo']['name']))
@@ -86,9 +83,9 @@
 	</div>
 
 	<div id="mr">
-		<h2>Least Squares</h2>
+		<h2>MR</h2>
 		<p>aquí puede descargar su archivo con la predicción del algoritmo MR</p>
-		<a class="boton_personalizado" href="descarga.php?var=2" >Predicción LS</a>
+		<a class="boton_personalizado" href="descarga.php?var=2" >Predicción MR</a>
 	</div>
 
 	<div id="prophet">
@@ -102,7 +99,7 @@
 	<div style="clear: both">
 		<p>Enlaces de obtención de los algoritmos: </p>
 		<p><a href="https://php-ml.readthedocs.io/en/latest/machine-learning/regression/svr/">SVR</a></p>
-		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">LS</a></p>
+		<p><a href="http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm">MR</a></p>
 		<p><a href="https://facebook.github.io/prophet/">prophet</a></p>
 		<p>Realizado por Aarón Portales, Carlos González, Pablo García y José Ignacio Mayoral</p>
 	</div>
