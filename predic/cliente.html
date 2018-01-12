@@ -41,19 +41,19 @@ En estadísticas, los métodos "Markov chain Monte Carlo" (MCMC) son una clase d
         <form action="cliente.php" method="post" enctype="multipart/form-data">
 		
 			<p>Debe introducir la fecha para la cual quiere la predicción, debe de tener formato dd/mm/aaaa
-			<input type="text" name="date" id="date" required ></p>	
+			<input type="text" name="date" id="date" value="12/12/2012" required ></p>	
 			
-			<!-- PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje -->
-			<input type="hidden" name="PosV" id="PosV" value=5 required >
+			<p>PosV es la posición de la variable a analizar en el csv, en los datos ejemplo, el voltaje </p>
+			<input type="text" name="PosV" id="PosV" value=5 required >
 			
-			<!--PostT es la posición de la variable en la que se encuentra el tiempo en el csv-->
-			<input type="hidden" name="PosT" id="PosT" value=0 required >
+			<p>PostT es la posición de la variable en la que se encuentra el tiempo en el csv </p>
+			<input type="text" name="PosT" id="PosT" value=0 required >
 
 			<p>Debe introducir la característica a predecir en prophet (Voltage, global_active..)
-			<input type="text" name="caract" id="caract" required ></p>		
+			<input type="text" name="caract" id="caract" value="Voltage" required ></p>		
 
 			<p>Debe introducir un número (no mayor de 2000) que serán los datos que tenga SVR en cuenta
-			<input type="text" name="num" id="num" required ></p>			
+			<input type="text" name="num" id="num" value="2000" required ></p>			
 			
 			
 		<p>Cargue un archivo CSV con las siguientes columnas:</p>

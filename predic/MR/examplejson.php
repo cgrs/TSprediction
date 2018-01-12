@@ -1,6 +1,6 @@
 <?php
 
-$arr = array('Fich' => "data.csv", 'Pre' => 12122012, 'PosV' => 5, 'PosT' => 0);
+$arr = array('Fich' => "data.csv", 'Pre' => "12/12/2012", 'PosV' => 5, 'PosT' => 0);
 
 echo json_encode($arr);
 
