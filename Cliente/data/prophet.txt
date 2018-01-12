@@ -1,5 +1,0 @@
-11 01 2018 11:01:17Se ha realizado la primera predicción con Prophet:
-11 01 2018 11:01:57Nueva predicción realizada:
-11 01 2018 11:01:37Nueva predicción realizada:
-11 01 2018 11:01:49Nueva predicción realizada:
-11 01 2018 11:01:57Nueva predicción realizada:
