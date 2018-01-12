@@ -54,11 +54,10 @@
 				
 			  }
 			  
-			$ruta= "data/$Fich";
+			$ruta= realpath("data/$Fich");
 
 			//nombramos un array que recopila todos los datos y el nombre del fichero subido.
-			$data = array('Fich' => $Fich,'Pre'=>$date ,'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta, 'num' => $num);
-			 
+			$data = array('Fich' => $Fich,'Pre'=>$date ,'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'feature' => $caract, 'file_or_url' => $ruta, 'num' => $num);		 
 			
 			if (isset($_FILES['archivo']['name']))
 			{

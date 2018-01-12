@@ -14,13 +14,16 @@ $datos = json_decode(file_get_contents('php://input'));
 
 	// por el puerto 5000 me comunico con el algoritmo prophet, programado en Python
 	$handle = curl_init("localhost:5000");
-	curl_setopt($handle, CURLOPT_POST, true);
-	curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($datos));
+    curl_setopt($handle, CURLOPT_POST, true);
+    $json = json_encode($datos,  JSON_UNESCAPED_SLASHES); // no escapa las barras
+    curl_setopt($handle, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($json))
+    );
+	curl_setopt($handle, CURLOPT_POSTFIELDS, $json);
 	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 	$response2=curl_exec($handle);
 	curl_close($handle);
-	
-	$response2 = json_decode($response2);
 
 	// me comunico con el algoritmo svr programado en php
 	$handle = curl_init("http://localhost/TSprediction/predic/svr/index.php");
@@ -35,12 +38,12 @@ $datos = json_decode(file_get_contents('php://input'));
 	
     if(file_exists($nombre_archivo))
     {
-        $mensaje = "Nueva predicción realizada:";
+        $mensaje = "Nueva predicciï¿½n realizada:";
     }
  
     else
     {
-        $mensaje = "Se ha realizado la primera predicción con LS:";
+        $mensaje = "Se ha realizado la primera predicciï¿½n con LS:";
     }
  
     if($archivo = fopen($nombre_archivo, "a"))
@@ -63,12 +66,12 @@ $datos = json_decode(file_get_contents('php://input'));
 	
     if(file_exists($nombre_archivo))
     {
-        $mensaje = "Nueva predicción realizada:";
+        $mensaje = "Nueva predicciï¿½n realizada:";
     }
  
     else
     {
-        $mensaje = "Se ha realizado la primera predicción con SVR:";
+        $mensaje = "Se ha realizado la primera predicciï¿½n con SVR:";
     }
  
     if($archivo = fopen($nombre_archivo, "a"))
@@ -91,12 +94,12 @@ $datos = json_decode(file_get_contents('php://input'));
 	
     if(file_exists($nombre_archivo))
     {
-        $mensaje = "Nueva predicción realizada:";
+        $mensaje = "Nueva predicciï¿½n realizada:";
     }
  
     else
     {
-        $mensaje = "Se ha realizado la primera predicción con Prophet:";
+        $mensaje = "Se ha realizado la primera predicciï¿½n con Prophet:";
     }
  
     if($archivo = fopen($nombre_archivo, "a"))
