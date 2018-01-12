@@ -57,12 +57,12 @@
 			$ruta= "data/$Fich";
 
 			//nombramos un array que recopila todos los datos y el nombre del fichero subido.
-			$data = array('Fich' => $Fich, 'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta, 'num' => $num);
+			$data = array('Fich' => $Fich,'Pre'=>$date ,'PosV' => $PosV, 'PosT' => $PosT, 'date' => $date, 'caract' => $caract, 'ruta' => $ruta, 'num' => $num);
 			 
 			
 			if (isset($_FILES['archivo']['name']))
 			{
-				$handle = curl_init("http://localhost/SOAFINAL/ESB.php");
+				$handle = curl_init("http://localhost/predic/ESB.php");
 				curl_setopt($handle, CURLOPT_POST, true);
 				curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($data));
 				curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);

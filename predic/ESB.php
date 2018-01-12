@@ -31,7 +31,7 @@ $datos = json_decode(file_get_contents('php://input'));
 	curl_close($handle);
 
 
-    $nombre_archivo = "data/ls.txt"; 
+    $nombre_archivo = "data/MR.txt"; 
 	
     if(file_exists($nombre_archivo))
     {
@@ -52,13 +52,13 @@ $datos = json_decode(file_get_contents('php://input'));
         }
         else
         {
-            echo "Ha habido un problema al crear o abrir el archivo de LS";
+            echo "Ha habido un problema al crear o abrir el archivo de MR";
 			echo "<br>";
         }
  
         fclose($archivo);
     }
-	
+	/*
     $nombre_archivo = "data/svr.txt"; 
 	
     if(file_exists($nombre_archivo))
@@ -114,5 +114,5 @@ $datos = json_decode(file_get_contents('php://input'));
  
         fclose($archivo);
     }
- 
+ */
 ?>
