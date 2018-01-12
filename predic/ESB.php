@@ -58,7 +58,7 @@ $datos = json_decode(file_get_contents('php://input'));
  
         fclose($archivo);
     }
-	/*
+	
     $nombre_archivo = "data/svr.txt"; 
 	
     if(file_exists($nombre_archivo))
@@ -114,5 +114,5 @@ $datos = json_decode(file_get_contents('php://input'));
  
         fclose($archivo);
     }
- */
+
 ?>
